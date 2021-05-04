@@ -46,7 +46,7 @@ void display( int queue[], int max){
 	}
 	else{
 		cout << "Elements in Queue are: ";
-		if(rear!=max-1){
+		if(rear!=max-1 || front!=0 ){
 					while(i <= rear){
 						cout << queue[i];
 						cout << "Element printed";
@@ -57,7 +57,6 @@ void display( int queue[], int max){
 
 					while(i <= rear){
 						cout << queue[i];
-						cout << "Element printed";
 						i = i+1;
 					}			
 			
