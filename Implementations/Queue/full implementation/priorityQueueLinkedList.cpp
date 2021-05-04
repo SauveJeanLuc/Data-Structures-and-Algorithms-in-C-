@@ -1,15 +1,11 @@
-// C++ code to implement Priority Queue
-// using Linked List
 #include <iostream>
 using namespace std;
  
-// Node
 struct Node
 {
     int data;
  
-    // Lower values indicate
-    // higher priority
+    // Lower values illustartes higher priority
     int priority;
  
     struct Node* next;
@@ -17,7 +13,7 @@ struct Node
 };
  
 
-Node newNode(int d, int p)
+Node* newNode(int d, int p)
 {
     Node* temp = new Node;
     temp->data = d;
@@ -38,7 +34,7 @@ void pop(Node** head)
 {
     Node* temp = *head;
     (*head) = (*head)->next;
-    free(temp);
+    delete(temp);
 }
  
 // Function to push according to priority
@@ -83,20 +79,29 @@ int isEmpty(Node** head)
 {
     return (*head) == NULL;
 }
+
+void display(Node* head){
+
+        while (head != NULL)
+        {
+        	cout << " "<< peek(&head);
+            head = head->next;
+        }
+
+}
  
 // Driver code
 int main()
 {
- 	int choice, dataFromUSer, priority;
+ 	int choice, dataFromUser, priority;
  	cout << endl;
     cout << "1 - Insert an element into queue"<<endl;
     cout << "2 - Delete an element from queue"<<endl;
     cout << "3 - Display queue elements"<<endl;
     cout << "4 - Exit";
  
-    create();
-    Node *pq = newNode;
- 
+ 	Node *pq = NULL;
+ 	
     while (1)
     {
         cout <<endl << "Enter your choice : " ;    
@@ -109,21 +114,24 @@ int main()
             cin >> dataFromUser;
             cout <<endl << "Enter value for priority : ";
             cin >> priority;
-            push(&pq, dataFromUser, priority);
+            if(isEmpty(&pq)){
+              	pq = newNode(dataFromUser, priority);
+			}
+			else{
+              push(&pq, dataFromUser, priority);				
+			}
+
             break;
         case 2:
             cout <<endl << "Enter value to delete : ";
-			pop(&pq)
+			pop(&pq);
             break;
         case 3: 
-                while (!isEmpty(&pq))
-    			{
-        			cout << " " << peek(&pq);
-        			pop(&pq);
-    			}
+			display(pq);
             break;
         case 4: 
             exit(0);
+            break;
         default: 
             cout <<"Choice is incorrect, Enter a correct choice";
         }
