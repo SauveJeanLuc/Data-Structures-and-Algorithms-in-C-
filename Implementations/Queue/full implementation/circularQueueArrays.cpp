@@ -17,7 +17,7 @@ void enqueue(int data, int queue[], int max){
 		cout << "Overflow error";
 	}
 	else{
-		rear = (rear+1)%max;
+		rear = (rear+1) % max;
 		queue[rear]= data;
 	}
 }
@@ -46,11 +46,23 @@ void display( int queue[], int max){
 	}
 	else{
 		cout << "Elements in Queue are: ";
-		while(i <= rear){
-			cout << queue[i];
-			cout << "Element printed";
-			i = (i+1)%max;
+		if(rear!=max-1){
+					while(i <= rear){
+						cout << queue[i];
+						cout << "Element printed";
+						i = (i+1) % max;
+					}
 		}
+		else if(rear == max-1){
+
+					while(i <= rear){
+						cout << queue[i];
+						cout << "Element printed";
+						i = i+1;
+					}			
+			
+		}
+
 	}
 }
 
