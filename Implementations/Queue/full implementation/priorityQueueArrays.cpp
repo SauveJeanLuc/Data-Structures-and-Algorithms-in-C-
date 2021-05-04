@@ -1,5 +1,5 @@
 /* 
- * C Program to Implement Priority Queue to Add and Delete Elements
+ * C++ Program to Implement Priority Queue using arrays
  */
 #include <iostream>
 using namespace std;
@@ -12,12 +12,12 @@ void create();
 void check(int);
 void display_pqueue();
  
-int pri_que[MAX];
+int priority_queue[MAX];
 int front, rear;
  
 int main()
 {
-    int n, ch;
+    int dataFromUser, choice;
  
  	cout << endl;
     cout << "1 - Insert an element into queue"<<endl;
@@ -30,19 +30,19 @@ int main()
     while (1)
     {
         cout <<endl << "Enter your choice : " ;    
-        cin >> ch;
+        cin >> choice;
  
-        switch (ch)
+        switch (choice)
         {
         case 1: 
             cout <<endl << "Enter value to be inserted : ";
-            cin >> n;
-            insert_by_priority(n);
+            cin >> dataFromUser;
+            insert_by_priority(dataFromUser);
             break;
         case 2:
             cout <<endl << "Enter value to delete : ";
-            cin >> n;
-            delete_by_priority(n);
+            cin >> dataFromUser;
+            delete_by_priority(dataFromUser);
             break;
         case 3: 
             display_pqueue();
@@ -73,7 +73,7 @@ void insert_by_priority(int data)
     {
         front++;
         rear++;
-        pri_que[rear] = data;
+        priority_queue[rear] = data;
         return;
     }    
     else
@@ -88,17 +88,17 @@ void check(int data)
  
     for (i = 0; i <= rear; i++)
     {
-        if (data >= pri_que[i])
+        if (data >= priority_queue[i])
         {
             for (j = rear + 1; j > i; j--)
             {
-                pri_que[j] = pri_que[j - 1];
+                priority_queue[j] = priority_queue[j - 1];
             }
-            pri_que[i] = data;
+            priority_queue[i] = data;
             return;
         }
     }
-    pri_que[i] = data;
+    priority_queue[i] = data;
 }
  
 /* Function to delete an element from queue */
@@ -114,14 +114,14 @@ void delete_by_priority(int data)
  
     for (i = 0; i <= rear; i++)
     {
-        if (data == pri_que[i])
+        if (data == priority_queue[i])
         {
             for (; i < rear; i++)
             {
-                pri_que[i] = pri_que[i + 1];
+                priority_queue[i] = priority_queue[i + 1];
             }
  
-        pri_que[i] = -99;
+        priority_queue[i] = -99;
         rear--;
  
         if (rear == -1) 
@@ -144,7 +144,7 @@ void display_pqueue()
  
     for (; front <= rear; front++)
     {
-        cout <<pri_que[front];
+        cout <<priority_queue[front];
     }
  
     front = 0;
