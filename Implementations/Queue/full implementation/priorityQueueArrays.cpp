@@ -42,15 +42,15 @@ int main()
         case 1: 
             cout <<endl << "Enter value to be inserted : ";
             cin >> dataFromUser;
-            insert_by_priority(dataFromUser,priority_queue,dataFromUser);
+            insert_by_priority(dataFromUser,priority_queue,max);
             break;
         case 2:
             cout <<endl << "Enter value to delete : ";
             cin >> dataFromUser;
-            delete_by_priority(dataFromUser,priority_queue,dataFromUser);
+            delete_by_priority(dataFromUser,priority_queue,max);
             break;
         case 3: 
-            display_pqueue(priority_queue,dataFromUser);
+            display_pqueue(priority_queue,max);
             break;
         case 4: 
             exit(0);

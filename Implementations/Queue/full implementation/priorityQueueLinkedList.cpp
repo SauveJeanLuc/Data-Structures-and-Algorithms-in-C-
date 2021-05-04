@@ -1,10 +1,10 @@
 // C++ code to implement Priority Queue
 // using Linked List
-#include <bits/stdc++.h>
+#include <iostream>
 using namespace std;
  
 // Node
-typedef struct node
+struct Node
 {
     int data;
  
@@ -12,14 +12,14 @@ typedef struct node
     // higher priority
     int priority;
  
-    struct node* next;
+    struct Node* next;
  
-} Node;
+};
  
-// Function to create a new node
-Node* newNode(int d, int p)
+
+Node newNode(int d, int p)
 {
-    Node* temp = (Node*)malloc(sizeof(Node));
+    Node* temp = new Node;
     temp->data = d;
     temp->priority = p;
     temp->next = NULL;
@@ -27,14 +27,13 @@ Node* newNode(int d, int p)
     return temp;
 }
  
-// Return the value at head
+// Returns the value found at head
 int peek(Node** head)
 {
     return (*head)->data;
 }
  
-// Removes the element with the
-// highest priority form the list
+// Removes the element with the highest priority form the list
 void pop(Node** head)
 {
     Node* temp = *head;
@@ -88,7 +87,41 @@ int isEmpty(Node** head)
 // Driver code
 int main()
 {
-     
+ 
+ 	cout << endl;
+    cout << "1 - Insert an element into queue"<<endl;
+    cout << "2 - Delete an element from queue"<<endl;
+    cout << "3 - Display queue elements"<<endl;
+    cout << "4 - Exit";
+ 
+    create();
+ 
+    while (1)
+    {
+        cout <<endl << "Enter your choice : " ;    
+        cin >> choice;
+ 
+        switch (choice)
+        {
+        case 1: 
+            cout <<endl << "Enter value to be inserted : ";
+            cin >> dataFromUser;
+            insert_by_priority(dataFromUser,priority_queue,dataFromUser);
+            break;
+        case 2:
+            cout <<endl << "Enter value to delete : ";
+            cin >> dataFromUser;
+            delete_by_priority(dataFromUser,priority_queue,dataFromUser);
+            break;
+        case 3: 
+            display_pqueue(priority_queue,dataFromUser);
+            break;
+        case 4: 
+            exit(0);
+        default: 
+            printf("\nChoice is incorrect, Enter a correct choice");
+        }
+    }
     // Create a Priority Queue
     // 7->4->5->6
     Node* pq = newNode(4, 1);
