@@ -12,11 +12,16 @@ void create();
 void check(int);
 void display_pqueue();
  
-int priority_queue[MAX];
+
 int front, rear;
  
 int main()
 {
+	int max;
+	cout << "Please enter the size of your queue:";
+	cin >> max;
+	int priority_queue[max];
+	
     int dataFromUser, choice;
  
  	cout << endl;
@@ -37,15 +42,15 @@ int main()
         case 1: 
             cout <<endl << "Enter value to be inserted : ";
             cin >> dataFromUser;
-            insert_by_priority(dataFromUser);
+            insert_by_priority(dataFromUser,priority_queue,dataFromUser);
             break;
         case 2:
             cout <<endl << "Enter value to delete : ";
             cin >> dataFromUser;
-            delete_by_priority(dataFromUser);
+            delete_by_priority(dataFromUser,priority_queue,dataFromUser);
             break;
         case 3: 
-            display_pqueue();
+            display_pqueue(priority_queue,dataFromUser);
             break;
         case 4: 
             exit(0);
@@ -62,7 +67,7 @@ void create()
 }
  
 /* Function to insert value into priority queue */
-void insert_by_priority(int data)
+void insert_by_priority(int data,int priority_queue[], int MAX)
 {
     if (rear >= MAX - 1)
     {
@@ -82,7 +87,7 @@ void insert_by_priority(int data)
 }
  
 /* Function to check priority and place element */
-void check(int data)
+void check(int data, int priority_queue[], int MAX)
 {
     int i,j;
  
@@ -102,7 +107,7 @@ void check(int data)
 }
  
 /* Function to delete an element from queue */
-void delete_by_priority(int data)
+void delete_by_priority(int data,int priority_queue[], int MAX)
 {
     int i;
  
@@ -134,7 +139,7 @@ void delete_by_priority(int data)
 }
  
 /* Function to display queue elements */
-void display_pqueue()
+void display_pqueue(int priority_queue[], int MAX)
 {
     if ((front == -1) && (rear == -1))
     {
