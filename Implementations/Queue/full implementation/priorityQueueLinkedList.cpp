@@ -87,7 +87,7 @@ int isEmpty(Node** head)
 // Driver code
 int main()
 {
- 
+ 	int choice, dataFromUSer, priority;
  	cout << endl;
     cout << "1 - Insert an element into queue"<<endl;
     cout << "2 - Delete an element from queue"<<endl;
@@ -95,6 +95,7 @@ int main()
     cout << "4 - Exit";
  
     create();
+    Node *pq = newNode;
  
     while (1)
     {
@@ -106,33 +107,28 @@ int main()
         case 1: 
             cout <<endl << "Enter value to be inserted : ";
             cin >> dataFromUser;
-            insert_by_priority(dataFromUser,priority_queue,dataFromUser);
+            cout <<endl << "Enter value for priority : ";
+            cin >> priority;
+            push(&pq, dataFromUser, priority);
             break;
         case 2:
             cout <<endl << "Enter value to delete : ";
-            cin >> dataFromUser;
-            delete_by_priority(dataFromUser,priority_queue,dataFromUser);
+			pop(&pq)
             break;
         case 3: 
-            display_pqueue(priority_queue,dataFromUser);
+                while (!isEmpty(&pq))
+    			{
+        			cout << " " << peek(&pq);
+        			pop(&pq);
+    			}
             break;
         case 4: 
             exit(0);
         default: 
-            printf("\nChoice is incorrect, Enter a correct choice");
+            cout <<"Choice is incorrect, Enter a correct choice";
         }
     }
-    // Create a Priority Queue
-    // 7->4->5->6
-    Node* pq = newNode(4, 1);
-    push(&pq, 5, 2);
-    push(&pq, 6, 3);
-    push(&pq, 7, 0);
- 
-    while (!isEmpty(&pq))
-    {
-        cout << " " << peek(&pq);
-        pop(&pq);
-    }
+
+
     return 0;
 }
