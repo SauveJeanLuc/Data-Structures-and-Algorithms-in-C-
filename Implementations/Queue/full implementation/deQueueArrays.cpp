@@ -149,7 +149,7 @@ int main()
                     break;
         }
     }
-    while(c!=7);
+    while(choice!=7);
     
     return 0;
 }
